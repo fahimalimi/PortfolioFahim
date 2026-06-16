@@ -1,0 +1,10 @@
+# Allow-list: ignore everything by default...
+*
+
+# ...except the files the live static site actually needs:
+!.gitignore
+!index.html
+!README.md
+!ResumeFahim.pdf
+!ktnb-home.png
+!mykoptnb-admin.jpeg
