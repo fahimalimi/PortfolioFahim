@@ -3,7 +3,7 @@
 Personal portfolio site for a full-stack engineer based in Kuala Lumpur, Malaysia.
 Built as a single, dependency-free static page — fast to load and zero build step.
 
-**Live:** _add your Vercel URL here once deployed_
+**Live:** [portfolio-fahim-delta.vercel.app](https://portfolio-fahim-delta.vercel.app)
 
 ## Stack
 - Hand-written HTML + CSS (no framework, no build)
