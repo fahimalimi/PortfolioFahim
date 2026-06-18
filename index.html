@@ -116,12 +116,37 @@
   figure.shot img{width:100%;display:block}
   figure.shot figcaption{margin-top:14px;font-size:.84rem;color:var(--muted);display:flex;gap:.7em;align-items:baseline}
   figure.shot figcaption b{color:var(--accent);font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
-  .shotgrid{display:grid;gap:16px;margin-bottom:16px}
-  .shotgrid.web{grid-template-columns:1fr 1fr}
-  .shotgrid.phones{grid-template-columns:repeat(3,1fr);margin-bottom:30px}
-  .shotgrid .shot{margin:0}
-  .shotgrid .frame{box-shadow:0 22px 44px -34px rgba(17,17,20,.4)}
-  .shotgrid figcaption{margin-top:11px;font-size:.8rem}
+
+  /* image carousel */
+  .carousel{margin:0 0 30px}
+  .stage{position:relative;height:clamp(380px,54vh,560px);background:var(--bg-2);
+    border:1px solid var(--line-2);border-radius:16px;overflow:hidden;
+    box-shadow:0 40px 80px -50px rgba(17,17,20,.4)}
+  .track{display:flex;height:100%;transition:transform .55s cubic-bezier(.22,.7,.18,1)}
+  .slide{flex:0 0 100%;margin:0;height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+  .slide img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
+    border-radius:8px;box-shadow:0 14px 34px -18px rgba(17,17,20,.5)}
+  .c-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:46px;height:46px;border-radius:50%;
+    border:1px solid var(--line-2);background:rgba(255,255,255,.92);backdrop-filter:blur(4px);color:var(--ink);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px -10px rgba(17,17,20,.4);
+    transition:transform .2s,background .2s,color .2s}
+  .c-arrow svg{width:21px;height:21px}
+  .c-arrow:hover{background:var(--ink);color:#fff;transform:translateY(-50%) scale(1.07)}
+  .c-arrow:active{transform:translateY(-50%) scale(.96)}
+  .c-arrow:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .c-arrow.prev{left:16px}
+  .c-arrow.next{right:16px}
+  .c-foot{display:flex;align-items:center;gap:16px;margin-top:16px;flex-wrap:wrap}
+  .c-cap{font-size:.86rem;color:var(--muted);display:flex;gap:.7em;align-items:baseline;margin:0;flex:1 1 auto;min-width:180px}
+  .c-cap b{color:var(--accent);font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+  .c-dots{display:flex;gap:9px;align-items:center}
+  .c-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:var(--line-2);cursor:pointer;
+    transition:background .25s,transform .25s}
+  .c-dots button:hover{background:var(--muted)}
+  .c-dots button.active{background:var(--accent);transform:scale(1.35)}
+  .c-dots button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .c-count{font-size:.8rem;color:var(--faint);font-variant-numeric:tabular-nums;min-width:46px;text-align:right}
+  @media (prefers-reduced-motion:reduce){.track{transition:none}}
 
   .case-detail{display:grid;grid-template-columns:1.2fr .8fr;gap:48px}
   .lead{font-size:1.18rem;line-height:1.5;color:var(--ink);margin:0 0 22px;letter-spacing:-.015em}
@@ -197,7 +222,6 @@
   /* ---------- responsive ---------- */
   @media (max-width:880px){
     .case-detail{grid-template-columns:1fr;gap:26px}
-    .shotgrid.web{grid-template-columns:1fr}
     .facts{grid-template-columns:repeat(2,1fr)}
     .grid2{grid-template-columns:1fr}
     .kit-row{grid-template-columns:1fr;gap:6px}
@@ -211,9 +235,11 @@
     .menu-btn{display:inline-block}
     .hero{padding:32px 0 48px}
     .facts{grid-template-columns:1fr}
-    .shotgrid.phones{display:flex;overflow-x:auto;gap:12px;padding-bottom:8px;
-      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-    .shotgrid.phones .shot{flex:0 0 64%;scroll-snap-align:center}
+    .stage{height:clamp(320px,52vh,440px)}
+    .slide{padding:14px}
+    .c-arrow{width:40px;height:40px}
+    .c-arrow.prev{left:10px}
+    .c-arrow.next{right:10px}
   }
 </style>
 </head>
@@ -325,29 +351,27 @@
           <h3>MyKopTNB — Member Super App</h3>
           <span class="pill"><span class="dot"></span>30,000+ members</span>
         </div>
-        <div class="shotgrid web">
-          <figure class="shot">
-            <div class="frame"><img src="mykoptnb-admin-1.jpeg" alt="MyKopTNB admin dashboard showing 30,603 registered members" loading="lazy"></div>
-            <figcaption><b>Admin</b> Dashboard overview · 30,603 members</figcaption>
-          </figure>
-          <figure class="shot">
-            <div class="frame"><img src="mykoptnb-admin-2.jpeg" alt="MyKopTNB admin event registrations and support tickets" loading="lazy"></div>
-            <figcaption><b>Admin</b> Event registrations &amp; support</figcaption>
-          </figure>
-        </div>
-        <div class="shotgrid phones">
-          <figure class="shot">
-            <div class="frame"><img src="mykoptnb-app-1.jpeg" alt="MyKopTNB mobile app member home with e-wallet and prayer times" loading="lazy"></div>
-            <figcaption><b>App</b> Member home &amp; e-wallet</figcaption>
-          </figure>
-          <figure class="shot">
-            <div class="frame"><img src="mykoptnb-app-2.jpeg" alt="MyKopTNB mobile app BazaRia in-app store" loading="lazy"></div>
-            <figcaption><b>App</b> BazaRia in-app store</figcaption>
-          </figure>
-          <figure class="shot">
-            <div class="frame"><img src="mykoptnb-app-3.jpeg" alt="MyKopTNB mobile app profile with membership card and QR code" loading="lazy"></div>
-            <figcaption><b>App</b> Profile &amp; membership QR</figcaption>
-          </figure>
+        <div class="carousel" id="kopShots" tabindex="0" aria-roledescription="carousel" aria-label="MyKopTNB screens">
+          <div class="stage">
+            <div class="track" id="kopTrack">
+              <figure class="slide"><img src="mykoptnb-admin-1.jpeg" alt="MyKopTNB admin dashboard showing 30,603 registered members"></figure>
+              <figure class="slide"><img src="mykoptnb-admin-2.jpeg" alt="MyKopTNB admin event registrations and support tickets"></figure>
+              <figure class="slide"><img src="mykoptnb-app-1.jpeg" alt="MyKopTNB mobile app member home with e-wallet and prayer times"></figure>
+              <figure class="slide"><img src="mykoptnb-app-2.jpeg" alt="MyKopTNB mobile app BazaRia in-app store"></figure>
+              <figure class="slide"><img src="mykoptnb-app-3.jpeg" alt="MyKopTNB mobile app profile with membership card and QR code"></figure>
+            </div>
+            <button class="c-arrow prev" id="kopPrev" type="button" aria-label="Previous screen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="c-arrow next" id="kopNext" type="button" aria-label="Next screen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+          <div class="c-foot">
+            <div class="c-cap" id="kopCap"><b>Admin</b> Dashboard overview · 30,603 members</div>
+            <div class="c-dots" id="kopDots" role="tablist" aria-label="Choose screen"></div>
+            <div class="c-count" id="kopCount">1 / 5</div>
+          </div>
         </div>
         <div class="case-detail">
           <div>
@@ -528,6 +552,54 @@
   const links=document.getElementById('links'),menuBtn=document.getElementById('menuBtn');
   menuBtn.addEventListener('click',()=>links.classList.toggle('open'));
   links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+  // MyKopTNB image carousel
+  (function(){
+    const root=document.getElementById('kopShots'); if(!root) return;
+    const track=document.getElementById('kopTrack');
+    const total=track.children.length;
+    const cap=document.getElementById('kopCap');
+    const count=document.getElementById('kopCount');
+    const dotsWrap=document.getElementById('kopDots');
+    const caps=[
+      ['Admin','Dashboard overview · 30,603 members'],
+      ['Admin','Event registrations & support'],
+      ['App','Member home & e-wallet'],
+      ['App','BazaRia in-app store'],
+      ['App','Profile & membership QR']
+    ];
+    let i=0;
+    const dots=[];
+    for(let n=0;n<total;n++){
+      const b=document.createElement('button');
+      b.type='button';
+      b.setAttribute('aria-label','Go to screen '+(n+1));
+      b.addEventListener('click',()=>go(n));
+      dotsWrap.appendChild(b);dots.push(b);
+    }
+    function go(n){
+      i=(n+total)%total;
+      track.style.transform='translateX(-'+(i*100)+'%)';
+      cap.innerHTML='<b>'+caps[i][0]+'</b> '+caps[i][1];
+      count.textContent=(i+1)+' / '+total;
+      dots.forEach((d,k)=>d.classList.toggle('active',k===i));
+    }
+    document.getElementById('kopPrev').addEventListener('click',()=>go(i-1));
+    document.getElementById('kopNext').addEventListener('click',()=>go(i+1));
+    root.addEventListener('keydown',e=>{
+      if(e.key==='ArrowLeft'){go(i-1);e.preventDefault();}
+      else if(e.key==='ArrowRight'){go(i+1);e.preventDefault();}
+    });
+    let x0=null;
+    root.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
+    root.addEventListener('touchend',e=>{
+      if(x0===null)return;
+      const dx=e.changedTouches[0].clientX-x0;
+      if(Math.abs(dx)>40){dx<0?go(i+1):go(i-1);}
+      x0=null;
+    });
+    go(0);
+  })();
 
   // staggered scroll reveal
   const els=document.querySelectorAll('.reveal');
