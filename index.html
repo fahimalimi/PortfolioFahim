@@ -116,6 +116,12 @@
   figure.shot img{width:100%;display:block}
   figure.shot figcaption{margin-top:14px;font-size:.84rem;color:var(--muted);display:flex;gap:.7em;align-items:baseline}
   figure.shot figcaption b{color:var(--accent);font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+  .shotgrid{display:grid;gap:16px;margin-bottom:16px}
+  .shotgrid.web{grid-template-columns:1fr 1fr}
+  .shotgrid.phones{grid-template-columns:repeat(3,1fr);margin-bottom:30px}
+  .shotgrid .shot{margin:0}
+  .shotgrid .frame{box-shadow:0 22px 44px -34px rgba(17,17,20,.4)}
+  .shotgrid figcaption{margin-top:11px;font-size:.8rem}
 
   .case-detail{display:grid;grid-template-columns:1.2fr .8fr;gap:48px}
   .lead{font-size:1.18rem;line-height:1.5;color:var(--ink);margin:0 0 22px;letter-spacing:-.015em}
@@ -191,6 +197,7 @@
   /* ---------- responsive ---------- */
   @media (max-width:880px){
     .case-detail{grid-template-columns:1fr;gap:26px}
+    .shotgrid.web{grid-template-columns:1fr}
     .facts{grid-template-columns:repeat(2,1fr)}
     .grid2{grid-template-columns:1fr}
     .kit-row{grid-template-columns:1fr;gap:6px}
@@ -204,6 +211,9 @@
     .menu-btn{display:inline-block}
     .hero{padding:32px 0 48px}
     .facts{grid-template-columns:1fr}
+    .shotgrid.phones{display:flex;overflow-x:auto;gap:12px;padding-bottom:8px;
+      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .shotgrid.phones .shot{flex:0 0 64%;scroll-snap-align:center}
   }
 </style>
 </head>
@@ -315,12 +325,30 @@
           <h3>MyKopTNB — Member Super App</h3>
           <span class="pill"><span class="dot"></span>30,000+ members</span>
         </div>
-        <figure class="shot">
-          <div class="frame">
-            <img src="mykoptnb-admin.jpeg" alt="MyKopTNB admin dashboard showing 30,603 registered members" loading="lazy">
-          </div>
-          <figcaption><b>Fig. 2</b> MyKopTNB — admin operations dashboard, 30,603 members</figcaption>
-        </figure>
+        <div class="shotgrid web">
+          <figure class="shot">
+            <div class="frame"><img src="mykoptnb-admin-1.jpeg" alt="MyKopTNB admin dashboard showing 30,603 registered members" loading="lazy"></div>
+            <figcaption><b>Admin</b> Dashboard overview · 30,603 members</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="frame"><img src="mykoptnb-admin-2.jpeg" alt="MyKopTNB admin event registrations and support tickets" loading="lazy"></div>
+            <figcaption><b>Admin</b> Event registrations &amp; support</figcaption>
+          </figure>
+        </div>
+        <div class="shotgrid phones">
+          <figure class="shot">
+            <div class="frame"><img src="mykoptnb-app-1.jpeg" alt="MyKopTNB mobile app member home with e-wallet and prayer times" loading="lazy"></div>
+            <figcaption><b>App</b> Member home &amp; e-wallet</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="frame"><img src="mykoptnb-app-2.jpeg" alt="MyKopTNB mobile app BazaRia in-app store" loading="lazy"></div>
+            <figcaption><b>App</b> BazaRia in-app store</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="frame"><img src="mykoptnb-app-3.jpeg" alt="MyKopTNB mobile app profile with membership card and QR code" loading="lazy"></div>
+            <figcaption><b>App</b> Profile &amp; membership QR</figcaption>
+          </figure>
+        </div>
         <div class="case-detail">
           <div>
             <p class="lead">A cooperative super-app for <b>30,000+ members</b> of KopTNB — the cooperative of TNB, Malaysia's national utility — pairing a React Native mobile app with a Next.js admin backend over <b>one versioned API</b>.</p>
